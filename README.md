@@ -40,6 +40,13 @@
 
 > Based on the great [tar-rs](https://github.com/alexcrichton/tar-rs).
 
+## Android compatibility
+
+This 0.5.1 maintenance branch backports the upstream xattr 1.6 dependency upgrade
+without changing the async-tar API. Older xattr 0.2 references `libc::ENOATTR`,
+which Android no longer exposes. Extended attributes remain enabled by default.
+The Android compile regression check is `cargo check --target aarch64-linux-android --lib`.
+
 ## Reading an archive
 
 ```rust,no_run
